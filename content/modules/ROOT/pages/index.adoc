@@ -1,4 +1,5 @@
 = OpenShift Dev Day
+include::partial$_attributes.adoc[]
 
 Welcome to OpenShift Dev Day -- a hands-on workshop where you experience the full developer journey on Red Hat OpenShift.
 
@@ -28,7 +29,12 @@ Everything you need is already provisioned. Your lab environment includes:
 * A user account with access to all workshop resources
 * A sample application (Parasol Insurance) that you will extend with a new feature
 
-Your credentials are available in the lab interface.
+Your login credentials (use these for Developer Hub, GitLab, and all workshop services):
+
+* **Username**: `{user}`
+* **Password**: `{password}`
+
+TIP: Keep these credentials handy -- you will need them several times during the workshop. They are also shown on the xref:02-details.adoc[Workshop details] page.
 
 == Estimated time
 
