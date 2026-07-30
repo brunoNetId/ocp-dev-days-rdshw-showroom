@@ -6,6 +6,8 @@ It is your first day at Parasol Insurance. You have been assigned to the claims 
 
 You do not need to install anything. You do not need to file a ticket. Everything you need is already waiting for you on the platform.
 
+TIP: If the instructions panel loses its scroll position after toggling the layout view (Split / Instructions / Tabs), toggle the layout mode once more to restore it.
+
 == Learning objectives
 
 By the end of this module, you will be able to:
@@ -248,9 +250,13 @@ image::parasol-app-home.png[Parasol Insurance application dashboard,link=self,wi
 
 Now implement the feature. You will create a new REST endpoint that returns claims statistics (totals, breakdowns by category and status).
 
-. Back in Dev Spaces, In the Explorer on the left, navigate to `src/main/java/com/parasol/`.
+. Back in Dev Spaces, click the **Explorer** icon in the left sidebar. In the file tree, expand `src` -> `main` -> `java` -> `com` -> `parasol`.
 
 . Right-click on the `parasol` directory and select **New File**. Name it `ClaimsStatsResource.java`.
++
+The full path must be `src/main/java/com/parasol/ClaimsStatsResource.java`.
++
+WARNING: Make sure you create the file inside the `parasol` folder -- not in `com`, not in `java`, and not at the project root. Creating it in the wrong location will cause build and route failures later in the pipeline.
 +
 image::parasol-app-newfile.png[Parasol Insurance application dashboard,link=self,window=blank,width=700]
 
@@ -307,7 +313,9 @@ public class ClaimsStatsResource {
 +
 NOTE: This code works, but it has some shortcuts. You used `System.out.println` instead of a proper logging framework, and the `catch` block silently swallows exceptions. These code smells are intentional -- the CI/CD pipeline will catch them in Section 4.
 
-. The file saves automatically. Quarkus dev mode detects the change and reloads the application -- no manual build step required.
+. Save the file with kbd:[Ctrl+S] (or kbd:[Cmd+S] on Mac). Quarkus dev mode detects the change and reloads the application -- no manual build step required.
++
+TIP: If the application does not reload automatically, check the terminal in Dev Spaces for compilation errors. You can also restart dev mode by pressing kbd:[Ctrl+Shift+P], selecting **Tasks: Run Task** -> **devfile** -> **Start Development Mode (Hot Reload + debug)**. If you see a port conflict, stop the existing task first.
 
 . In your browser, switch to the tab for the Parasol running application, remove the `dashboard.html` from the URL and add `/api/claims/stats` to the end of the URL in the browser's address bar.
 +
@@ -344,6 +352,8 @@ You now have:
 
 [#section-4]
 == Section 4: Ship it
+
+NOTE: If you need to log in again at any point, your credentials are: username `{user}`, password `{password}`.
 
 Your feature works locally. Time to push it through the platform's CI/CD pipeline. A simple `git push` triggers an automated pipeline that builds, tests, and scans your code. No tickets, no manual triggers, no handoffs.
 
@@ -483,6 +493,8 @@ image::zoo-code-save.png[Clicking Save to approve the AI assistant's file edits,
 image::zoo-code-result.png[Clicking Save to approve the AI assistant's file edits,link=self,window=blank,width=700]
 
 
+TIP: If the AI assistant is unresponsive or does not apply the fixes correctly, you can manually replace the contents of `ClaimsStatsResource.java` with the corrected version below.
+
 . Since LLMs are not deterministic, verify the corrected code looks similar to this:
 +
 [source,java,role="copypaste"]
@@ -576,6 +588,8 @@ You have now:
 [#section-6]
 == Section 6: Go live
 
+NOTE: If you need to log in again at any point, your credentials are: username `{user}`, password `{password}`.
+
 The pipeline passed. Your code has been built, tested, scanned, and packaged. Now it is time to merge your changes and see them deployed to production through GitOps.
 
 === Exercise 1: Merge your feature branch
@@ -625,13 +639,17 @@ Creating this tag triggers a pipeline behind the scenes. When the pipeline compl
 
 === Exercise 3: Approve the GitOps promotion
 
+IMPORTANT: This step uses a *different repository* than the one you have been working in. You need to navigate to your **manifests** repository (`parasol-insurance-manifests`), not the source code repository (`parasol-insurance`). The manifests repo contains the Argo CD/GitOps configuration that controls what gets deployed to production.
+
 . In GitLab, navigate to the `{user}/parasol-insurance-manifests` repository.
 +
-You can find it by clicking the GitLab logo in the top-left to go to the home page, then selecting the project from the list.
+You can find it by clicking the GitLab logo in the top-left to go to the home page, then selecting **parasol-insurance-manifests** from the project list (not `parasol-insurance`).
 
 . Click **Merge Requests** in the left sidebar.
 
 . Find the merge request that bumps the Argo CD values to your new tag (`1.1`). Click on it.
++
+TIP: If the merge request has not appeared yet, wait a minute -- the tag pipeline needs to complete first. Refresh the page to check again.
 
 . Review the changes -- you will see the image tag being updated to reference your new release.
 
