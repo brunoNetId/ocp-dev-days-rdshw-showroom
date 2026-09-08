@@ -189,24 +189,33 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   // If we created the button, it's already labeled "Finish"
 
-  // Find module name from nav sidebar
-  var moduleName = '';
+  // Find section name and module home URL from nav sidebar
+  // Walk up the nav-item tree, tracking ancestors that have links
+  // (Antora wraps nav sections in depth-0 nav-items with no link)
+  var sectionName = '';
+  var homeUrl = './';
   var currentItem = document.querySelector('.nav-item.is-current-page');
   if (currentItem) {
     var el = currentItem;
+    var topWithLink = null;
+    var secondWithLink = null;
     while (el) {
+      if (el.querySelector(':scope > a.nav-link')) {
+        secondWithLink = topWithLink;
+        topWithLink = el;
+      }
       var parent = el.parentElement ? el.parentElement.closest('.nav-item') : null;
       if (!parent) break;
       el = parent;
     }
-    var link = el.querySelector(':scope > a.nav-link');
-    if (link) moduleName = link.textContent.trim();
+    if (topWithLink) {
+      homeUrl = topWithLink.querySelector(':scope > a.nav-link').getAttribute('href');
+    }
+    var nameSource = secondWithLink || topWithLink;
+    if (nameSource) {
+      sectionName = nameSource.querySelector(':scope > a.nav-link').textContent.trim();
+    }
   }
-
-  // Find home URL from nav
-  var homeUrl = './';
-  var homeLink = document.querySelector('.nav-list > .nav-item:first-child > a.nav-link');
-  if (homeLink) homeUrl = homeLink.getAttribute('href');
 
   // Determine module prefix from current URL
   var pathMatch = window.location.pathname.match(/\/([^\/]+\/)[^\/]+?(?:\.html)?$/);
@@ -282,9 +291,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Populate dynamic content
   var overlay = document.getElementById('celebration-overlay');
   var moduleEl = document.getElementById('celebration-module');
-  moduleEl.innerHTML = moduleName
-    ? 'You completed <strong>' + moduleName + '</strong>'
-    : 'You completed this module';
+  moduleEl.innerHTML = sectionName
+    ? 'You completed <strong>' + sectionName + '</strong>'
+    : 'You completed this section';
   document.getElementById('celebration-home').href = homeUrl;
 
   // Intercept Next link click → show celebration instead

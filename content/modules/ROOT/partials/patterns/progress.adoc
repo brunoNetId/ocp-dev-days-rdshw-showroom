@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var prefixMatch = pageKey.match(/([^\/]*\/)/);
   if (prefixMatch) localStorage.setItem('resume:' + prefixMatch[1], window.location.pathname);
 
-  // Override "Previous" link when it crosses module boundaries → go to Home
+  // Override "Previous" link when it crosses module boundaries → go to module Home
   var currentDir = window.location.pathname.replace(/[^\/]*$/, '');
   var prevLink = document.querySelector('.nav-prev a')
     || document.querySelector('.pagination .prev a');
@@ -17,8 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
     var prevUrl = new URL(prevLink.getAttribute('href'), window.location.href);
     var prevDir = prevUrl.pathname.replace(/[^\/]*$/, '');
     if (currentDir !== prevDir) {
-      var homeLink = document.querySelector('.nav-list > .nav-item:first-child > a.nav-link');
-      prevLink.setAttribute('href', homeLink ? homeLink.getAttribute('href') : './');
+      var moduleHome = './';
+      var curItem = document.querySelector('.nav-item.is-current-page');
+      if (curItem) {
+        var el = curItem;
+        var lastWithLink = null;
+        while (el) {
+          if (el.querySelector(':scope > a.nav-link')) lastWithLink = el;
+          var parent = el.parentElement ? el.parentElement.closest('.nav-item') : null;
+          if (!parent) break;
+          el = parent;
+        }
+        if (lastWithLink) {
+          moduleHome = lastWithLink.querySelector(':scope > a.nav-link').getAttribute('href');
+        }
+      }
+      prevLink.setAttribute('href', moduleHome);
       prevLink.textContent = 'Home';
     }
   }
