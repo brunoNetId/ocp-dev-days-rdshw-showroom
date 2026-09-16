@@ -608,7 +608,7 @@ NOTE: If no prompt appears, click **Merge Requests** in the left sidebar, then *
 
 . Click **Create merge request** at the bottom to create the new request. The new request is created and opened for you and others to review.
 
-. At this point, the code would normally be reviewed and approved by others, but for now, to merge your changes into the main branch, just click **Merge**.
+. At this point, the code would normally be reviewed and approved by others, but for now, to merge your changes into the main branch, in the *Ready to merge* box click the dropdown on the blue button and click **Merge immediately**.
 +
 image::gitlab-merged.png[Merge complete,link=self,window=blank,width=700]
 
@@ -653,7 +653,7 @@ TIP: If the merge request has not appeared yet, wait a minute -- the tag pipelin
 
 . Review the changes -- you will see the image tag being updated to reference your new release.
 
-. Click **Merge** to approve the promotion to production.
+. In the *Ready to merge* box click the dropdown on the blue button and click **Merge immediately** to approve the promotion to production.
 +
 image::gitlab-manifests-mr.png[Merge request updating the production image tag in the GitOps manifests repo,link=self,window=blank,width=700]
 
