@@ -5,7 +5,7 @@ include::partial$style.adoc[]
 [id="lab3-ingestion-flow"]
 == The Ingestion Flow
 
-With database connectivity in place via {rhsi}, you can now implement the complete ingestion flow. The Camel integration will handle the full lifecycle of an incoming Purchase Order — from reception to archival.
+With database connectivity in place via {rhsi}, you can now implement the complete ingestion flow. The Camel integration will handle the full lifecycle of an incoming policy application — from reception to archival.
 
 {empty} +
 
@@ -17,12 +17,12 @@ With database connectivity in place via {rhsi}, you can now implement the comple
 ----
 flowchart LR
 
-    Customer --> Shop -->|"EDI message"| Camel
+    Customer --> Portal -->|"EDI message"| Camel
 
     subgraph LocalEnvironment [OpenShift]
-        Shop
+        Portal
         Camel --> |"① XML data"|ServiceInterconnect{{"Service\nInterconnect"}}
-        Camel --> |"② PDF Invoices"|Storage
+        Camel --> |"② PDF policy documents"|Storage
     end
 
     subgraph RemoteEnvironment [Remote Environment]
@@ -33,7 +33,7 @@ flowchart LR
 
     Camel@{ img: "../../_images/module-03/common/integration-icon.svg", label: "Camel Integration", pos: "b", h: 80, w: 80, constraint: "on" }
     Customer@{ img: "../../_images/module-03/common/customer-icon.svg", label: "Customer", pos: "b", h: 80, w: 80, constraint: "on" }
-    Shop@{ img: "../../_images/module-03/common/shop-icon.svg", label: "Shop", pos: "b", h: 80, w: 80, constraint: "on" }
+    Portal@{ img: "../../_images/module-03/common/shop-icon.svg", label: "Portal", pos: "b", h: 80, w: 80, constraint: "on" }
     Storage@{ img: "../../_images/module-03/common/s3-icon.svg", label: "OpenShift<br>Data Foundation", pos: "b", h: 80, w: 80, constraint: "on" }
     Database@{ img: "../../_images/module-03/common/database-icon.svg", label: "Database", pos: "b", h: 70, w: 70, constraint: "on" }
 
@@ -43,7 +43,7 @@ flowchart LR
     style ServiceInterconnect fill:#f8b4b4,stroke:#EE0000,color:#333
     style Customer fill:none,stroke:none
     style Camel fill:none,stroke:none,font-weight:bold
-    style Shop fill:none,stroke:none
+    style Portal fill:none,stroke:none
     style Storage fill:none,stroke:none
     style Database fill:none,stroke:none
 ----
@@ -52,7 +52,7 @@ flowchart LR
 
 *Sequence of Operations*
 
-The sequence diagram below details each step the Camel integration performs when processing a Purchase Order:
+The sequence diagram below details each step the Camel integration performs when processing a policy application:
 
 {blank}
 
@@ -64,7 +64,7 @@ sequenceDiagram
     participant ServiceInterconnect as Service Interconnect
     participant DB@{ "type": "database", "alias": "Database" }
     participant S3Bucket@{ "type": "collections", "alias": "S3 Bucket" }
-    Customer->>Camel: Send PO (EDI)
+    Customer->>Camel: Send Policy Application (EDI)
     Camel->>Camel: Transform EDI → XML
     Camel->>ServiceInterconnect: Push XML data
     ServiceInterconnect->>DB: Store data
@@ -120,12 +120,11 @@ pass:[<mark style="padding-left: 1rem; background-color: white; color: grey"><b>
 pass:[<mark style="padding-left: 1rem; background-color: white; color: orange"><b>&nbsp;&lt;&gt;</b></mark>] *index.html* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: purple"><b><i>&nbsp;&nbsp;!&nbsp;&nbsp;</i></b></mark>] *ingest.camel.yaml* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: grey"><b>&nbsp;≡&nbsp;&nbsp;</b></mark>] *kaoto-datamapper-e6fb3e6b-4288.xsl* +
-pass:[<mark style="padding-left: 1rem; background-color: white; color: #ce6a32"><b>&nbsp;J&nbsp;&nbsp;</b></mark>] *s3Presigner.java* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: grey"><b>&nbsp;≡&nbsp;&nbsp;</b></mark>] *template-pdf.xsl* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: orange"><b>&nbsp;≋&nbsp;&nbsp;</b></mark>] *X12-850.dfdl.xsd* +
 pass:[<mark style="padding-left: 1rem; background-color: white; color: #ce6a32"><b>&nbsp;J&nbsp;&nbsp;</b></mark>] *x12.java* +
 
-TIP: The `index.html` file is a simple shopping app that simulates a customer placing purchase orders. Camel JBang can serve static HTML alongside your routes, so you'll use it in the next sections to trigger orders and test your integration end to end.
+TIP: The `index.html` file is a simple portal app that simulates a customer submitting policy applications. Camel JBang can serve static HTML alongside your routes, so you'll use it in the next sections to trigger submissions and test your integration end to end.
 --
 +
 {empty} +
@@ -136,7 +135,7 @@ The `application.properties` file is already pre-configured with the credentials
 +
 --
 * *Database* — connection settings for the PostgreSQL database (reachable via Service Interconnect)
-* *S3 object storage* — access key, secret, and endpoint for uploading generated PDF invoices
+* *S3 object storage* — access key, secret, and endpoint for uploading generated PDF policy documents
 --
 +
 {blank}
@@ -229,12 +228,12 @@ You should now see the `service-x12` route — the main ingestion flow:
 [.bordered]
 image::module-03/m1/kaoto-service-x12-route.png[width=90%]
 
-Reading left to right, each step in the pipeline handles a stage of the Purchase Order lifecycle:
+Reading left to right, each step in the pipeline handles a stage of the policy application lifecycle:
 
-* `platform-http` — the API endpoint that receives incoming Purchase Orders
+* `platform-http` — the API endpoint that receives incoming policy applications
 * `transform-x12` — transforms the EDI data into XML
 * `sql` — stores the data in the backend database
-* `store-pdf-s3` — renders a PDF invoice and uploads it to S3
+* `store-pdf-s3` — renders a PDF policy document and uploads it to S3
 
 NOTE: Notice the two blue *To do: Enable* blocks — these are disabled steps that you'll activate in the next exercise. By the end, the full flow will be connected and functional.
 

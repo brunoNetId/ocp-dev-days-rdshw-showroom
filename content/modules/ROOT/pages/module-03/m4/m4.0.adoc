@@ -20,13 +20,13 @@ image::module-03/m4/prereq.png[width=75%]
 
 *The Business Need*
 
-When a customer reaches out about a purchase order — whether to update details, return items, or resolve a discrepancy — support agents traditionally have to manually navigate multiple backend databases and file systems to address the request. This is slow, error-prone, and frustrating for both agents and customers. They need a faster, frictionless way to handle these cases.
+When a customer reaches out about a policy application — whether to update details, change coverage, or resolve a discrepancy — support agents traditionally have to manually navigate multiple backend databases and file systems to address the request. This is slow, error-prone, and frustrating for both agents and customers. They need a faster, frictionless way to handle these cases.
 
 {empty} +
 
 *The Technical Solution*
 
-Support agents interact with an AI bot directly within their Rocket.Chat window using natural language. Powered by Agentic Apache Camel and Model-as-a-Service (MaaS), the AI acts as a smart assistant — it interprets the agent's request, autonomously decides which tools to call, updates the database, and regenerates the corrected invoice in S3 storage. This dramatically reduces resolution time and eliminates manual "swivel-chair" tasks for support teams.
+Support agents interact with an AI bot directly within their Rocket.Chat window using natural language. Powered by Agentic Apache Camel and Model-as-a-Service (MaaS), the AI acts as a smart assistant — it interprets the agent's request, autonomously decides which tools to call, updates the database, and regenerates the corrected policy document in S3 storage. This dramatically reduces resolution time and eliminates manual "swivel-chair" tasks for support teams.
 
 {empty} +
 
@@ -78,7 +78,7 @@ flowchart LR
 ----
 
 
-The AI agent follows a reasoning loop — it consults the LLM via MaaS, which decides what actions to take. Camel then executes the appropriate tools via *MCP* (update the database, regenerate a PDF invoice in S3), feeds the results back to the LLM, and returns the final answer to the support agent in Rocket.Chat.
+The AI agent follows a reasoning loop — it consults the LLM via MaaS, which decides what actions to take. Camel then executes the appropriate tools via *MCP* (update the database, regenerate a PDF policy document in S3), feeds the results back to the LLM, and returns the final answer to the support agent in Rocket.Chat.
 
 [NOTE]
 ====

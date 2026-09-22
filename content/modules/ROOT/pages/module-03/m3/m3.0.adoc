@@ -20,7 +20,7 @@ image::module-03/m3/prereq.png[width=70%]
 
 === Quick reminder
 
-Customers reach out about their Purchase Orders through *Matrix*, while support agents respond from *Rocket.Chat*. The goal is to bridge both platforms so messages flow seamlessly between them.
+Customers reach out about their Policy Applications through *Matrix*, while support agents respond from *Rocket.Chat*. The goal is to bridge both platforms so messages flow seamlessly between them.
 
 {empty} +
 

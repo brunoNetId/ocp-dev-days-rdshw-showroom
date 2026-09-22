@@ -30,16 +30,16 @@
           <div style="margin-bottom: 10px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 4px;">&#x1F4CA; Customer Profile</div>
             <ul style="margin: 2px 0; padding-left: 20px; line-height: 1.5; list-style-type: disc; color: #000;">
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">Chapman, Kim and Green</span>, Gold membership, <span style="font-weight:bold">US-East</span> region</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">Alex Morgan</span>, Gold membership, <span style="font-weight:bold">US-South</span> region</li>
             </ul>
           </div>
 
           <div style="margin-bottom: 4px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 4px;">&#x1F4CB; Open Issues</div>
             <ul style="margin: 2px 0; padding-left: 20px; line-height: 1.5; list-style-type: disc; color: #000;">
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-1025</span> &#x2014; Refund request &#x2014; Stemless wine glasses returned (Invoice 61356291)</li>
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-0871</span> &#x2014; Delayed shipment &#x2014; Order 58201437 (resolved)</li>
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-0943</span> &#x2014; Pricing correction &#x2014; Order 59843102 (resolved)</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-0871</span> &#x2014; Welcome documents not received &#x2014; Policy 58201437 (resolved)</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-0943</span> &#x2014; Billing discrepancy &#x2014; December statement (resolved)</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-1025</span> &#x2014; Roadside Assistance removed (Policy 61356291) &#x2014; <span style="font-weight:bold">open</span></li>
             </ul>
           </div>
 

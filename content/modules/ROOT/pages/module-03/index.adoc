@@ -39,7 +39,7 @@ Get familiar with the workshop goals, the technologies at play, the scenario, an
 ****
 xref:module-03/m1/m1.0.adoc[Lab 1 -- Ingest Service]
 
-Ingest EDI Purchase Orders, transform and store them in a backend database, and generate PDF invoices — with secure cross-cluster connectivity powered by Service Interconnect.
+Ingest EDI policy applications, transform and store them in a backend database, and generate PDF policy documents — with secure cross-cluster connectivity powered by Service Interconnect.
 ****
 
 [.tile]
@@ -60,7 +60,7 @@ Decouple the messaging architecture using Kafka as the backbone, adopt a standar
 ****
 xref:module-03/m4/m4.0.adoc[Lab 4 -- AI Customer Support]
 
-Build an AI-powered support agent that resolves invoice issues through natural language in Rocket.Chat — orchestrated by Agentic Apache Camel and MaaS.
+Build an AI-powered support agent that resolves policy issues through natural language in Rocket.Chat — orchestrated by Agentic Apache Camel and MaaS.
 ****
 
 [.tile]

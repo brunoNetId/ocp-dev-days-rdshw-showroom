@@ -30,8 +30,8 @@
           <div style="margin-bottom: 10px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 4px;">&#x1F4CA; Customer Profile</div>
             <ul style="margin: 2px 0; padding-left: 20px; line-height: 1.5; list-style-type: disc; color: #000;">
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">Chapman, Kim and Green</span>, Gold, <span style="font-weight:bold">3.5 years</span></li>
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">$48,200</span> annual revenue, Net 30 terms, FedEx Ground preferred</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">Alex Morgan</span>, Gold, <span style="font-weight:bold">1.5 years</span></li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">$1,234.08</span> annual premium ($102.84/mo), policy active since June 2025</li>
             </ul>
           </div>
 
@@ -46,13 +46,13 @@
           <div style="margin-bottom: 10px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 4px;">&#x1F4CB; Open Issues</div>
             <ul style="margin: 2px 0; padding-left: 20px; line-height: 1.5; list-style-type: disc; color: #000;">
-              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-1025</span>: Refund request &#x2014; Stemless wine glasses returned (Invoice 61356291), pending confirmation and processing</li>
+              <li style="margin-bottom: 2px;"><span style="font-weight:bold">TKT-1025</span>: Policy amendment &#x2014; Roadside Assistance removed (Policy 61356291), pending premium adjustment and refund for current billing cycle</li>
             </ul>
           </div>
 
           <div style="margin-bottom: 4px;">
             <div style="font-size: 16px; font-weight: bold; margin-bottom: 4px;">&#x1F4A1; Recommended Action</div>
-            <div style="padding-left: 4px;"><span style="font-weight:bold">Follow up with Dana Kim</span> to confirm receipt of returned goods and finalize refund.</div>
+            <div style="padding-left: 4px;"><span style="font-weight:bold">Follow up with Alex Morgan</span> to confirm the Roadside Assistance removal and process the premium refund for the current billing cycle.</div>
           </div>
 
         </div>

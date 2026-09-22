@@ -20,12 +20,12 @@ image::module-03/m5/prereq.png[width=95%]
 
 === The Scenario
 
-In the previous labs, you built an AI agent that resolves customer support issues through natural language. The agent queries the database, updates records, and regenerates invoices, all from within the chat interface.
+In the previous labs, you built an AI agent that resolves customer support issues through natural language. The agent queries the database, updates records, and regenerates policy documents, all from within the chat interface.
 
 Now you want to extend it with a new capability: **customer profile analysis**. When a support agent asks about a customer, the AI analyzes their data and returns a structured summary. Two tiers of analysis are available:
 
-* **Gold** -- full purchase history, spending patterns, and loyalty status.
-* **Silver** -- recent orders and basic profile information.
+* **Gold** -- full policy history, claims history, and loyalty status.
+* **Silver** -- recent policies and basic profile information.
 
 [.mermaid.mermaid-w60]
 ----

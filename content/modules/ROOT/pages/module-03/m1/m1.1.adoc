@@ -841,7 +841,7 @@ You have successfully:
 
 The database lives in a secure, air-tight environment — the connection was initiated *from* the database side *to* yours through an encrypted Skupper link. No network policy changes, no VPNs, no elevated permissions required.
 
-The link you've established will stay active — you'll need it in the next exercise to implement the full data flow: ingesting Purchase Orders, storing them in the database, and rendering PDF invoices.
+The link you've established will stay active — you'll need it in the next exercise to implement the full data flow: ingesting policy applications, storing them in the database, and rendering PDF policy documents.
 
 {empty} +
 

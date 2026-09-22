@@ -24,7 +24,7 @@ NOTE: Matrix and Rocket.Chat are messaging platforms similar to Slack, Telegram,
 
 === The messaging scenario
 
-Customers who have placed Purchase Orders may need to reach out to customer support — whether it's a complaint, a request to return items, or changes to an existing order. On the other side, support agents are ready to assist them.
+Customers who have submitted Policy Applications may need to reach out to customer support — whether it's a complaint, a question about their coverage, or changes to an existing policy. On the other side, support agents are ready to assist them.
 
 The interesting part is that each side uses a *different* messaging platform:
 

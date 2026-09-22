@@ -5,7 +5,7 @@ include::partial$style.adoc[]
 [id="workshop-journey"]
 == The Workshop Journey
 
-You'll play the role of an integration developer at a company that operates an e-commerce platform. Through the workshop labs you will build the integrations that ingest purchase orders data, bridge messaging systems for customer support, plug in AI to help agents resolve issues, and add governance on top, all with application integration and connectivity tools.
+You'll play the role of an integration developer at Parasol Insurance. Through the workshop labs you will build the integrations that ingest policy applications, bridge messaging systems for customer support, plug in AI to help agents resolve issues, and add governance on top, all with application integration and connectivity tools.
 
 {empty} +
 
@@ -21,7 +21,7 @@ You will work with all of these as you progress through the labs.
 
 === The Business Scenario
 
-Your company operates an e-commerce platform. Customers place purchase orders; the system ingests them, transforms the data, stores it in a database, and generates invoices. When a customer spots a problem with their order, they contact support through an instant messaging platform. A support agent investigates, fixes the issue, and regenerates the invoice.
+Your company is Parasol Insurance. Customers submit policy applications; the system ingests them, transforms the data, stores it in a database, and generates policy documents. When a customer spots a problem with their policy, they contact support through an instant messaging platform. A support agent investigates, fixes the issue, and regenerates the policy document.
 
 The challenge: the systems involved don't talk to each other. The database sits on separate infrastructure. The messaging platforms are disconnected. The support team handles every step manually, jumping between systems to fix issues. There's no AI in the loop, and no controls around AI even if there were.
 
@@ -38,7 +38,7 @@ The labs follow a story. Each phase solves a problem that sets up the next one.
 [#journey-diagram.mermaid]
 ----
 flowchart LR
-    A["Ingest purchase\norders"] -->|"customer spots\na problem"| B["Multi-channel\ncommunication"]
+    A["Ingest policy\napplications"] -->|"customer spots\na problem"| B["Multi-channel\ncommunication"]
     B -->|"agent needs\nhelp resolving"| C["AI-assisted\nsupport"]
     C -->|"AI usage must\nbe controlled"| D["Govern AI\nconsumption"]
 
@@ -62,10 +62,10 @@ journey-diagram
 
 [.mermaid-hints-simple]
 ****
-A | ① Secure Data Ingestion | The commerce platform sends purchase orders in EDI format. A Camel flow transforms the EDI into XML and stores the data in a backend database. The database lives on separate infrastructure, so Service Interconnect provides a secure link without exposing anything to the public network. The flow also renders PDF invoices and pushes them to S3 storage. +
-B | ② Multi-Channel Communication | A customer reviews their invoice and spots a mistake. They reach out to support, but customer and support team use different messaging platforms. +
+A | ① Secure Data Ingestion | The customer portal sends policy applications in EDI format. A Camel flow transforms the EDI into XML and stores the data in a backend database. The database lives on separate infrastructure, so Service Interconnect provides a secure link without exposing anything to the public network. The flow also renders PDF policy documents and pushes them to S3 storage. +
+B | ② Multi-Channel Communication | A customer reviews their policy document and spots a mistake. They reach out to support, but customer and support team use different messaging platforms. +
 You connect both so that messages from one show up in the other. Agents can respond from their own portal without caring which platform the customer is on. +
-C | ③ AI-assisted Issue Resolution | The support agent needs to look up the order, fix it in the database, and regenerate the invoice. Instead of doing it manually, the agent talks to an AI bot right inside their messaging portal. +
+C | ③ AI-assisted Issue Resolution | The support agent needs to look up the policy, fix it in the database, and regenerate the policy document. Instead of doing it manually, the agent talks to an AI bot right inside their messaging portal. +
 The integration layer sends the request to an LLM, which decides what to do (query the database, update the record, regenerate the PDF) and reports back. The whole thing happens using natural language. +
 D | ④ Governing AI Consumption | Once AI is part of the workflow, you need controls. Who can call the LLM? How many tokens can it consume? +
 A gateway sits in front of the AI service and enforces authentication and token-based rate limits. Multiple tiers of service, each with its own token budget. When one tier runs out, the system falls back to the next.
@@ -87,7 +87,7 @@ flowchart LR
     chatInner ~~~ Customer
     chatInner ~~~ SupportAgent
 
-    Customer --> Shop -->|"EDI message"| Camel
+    Customer --> Portal -->|"EDI message"| Camel
 
     Camel --> ServiceInterconnect{{"Service\nInterconnect"}} --> Database
 
@@ -110,7 +110,7 @@ flowchart LR
 
     Camel@{ img: "../../_images/module-03/common/integration-icon.svg", label: "Camel Integration", pos: "b", h: 80, w: 80, constraint: "on" }
     Customer@{ img: "../../_images/module-03/common/customer-icon.svg", label: "Customer", pos: "b", h: 80, w: 80, constraint: "on" }
-    Shop@{ img: "../../_images/module-03/common/shop-icon.svg", label: "Shop", pos: "b", h: 80, w: 80, constraint: "on" }
+    Portal@{ img: "../../_images/module-03/common/shop-icon.svg", label: "Portal", pos: "b", h: 80, w: 80, constraint: "on" }
     Storage@{ img: "../../_images/module-03/common/s3-icon.svg", label: "OpenShift<br>Data Foundation", pos: "b", h: 80, w: 80, constraint: "on" }
     SupportAgent@{ img: "../../_images/module-03/common/agent-icon.svg", label: "Support Agent", pos: "b", h: 80, w: 80, constraint: "on" }
     LLM@{ img: "../../_images/module-03/common/ai-model-icon.svg", label: "MaaS / LLM", pos: "b", h: 80, w: 80, constraint: "on" }
@@ -130,7 +130,7 @@ flowchart LR
     style ServiceInterconnect fill:#f8b4b4,stroke:#EE0000,color:#333
     style Customer fill:none,stroke:none
     style Camel fill:none,stroke:none,font-weight:bold
-    style Shop fill:none,stroke:none
+    style Portal fill:none,stroke:none
     style Storage fill:none,stroke:none
     style spacer1 fill:none,stroke:none,width:1px,height:1px
     style spacer2 fill:none,stroke:none,width:1px,height:1px
