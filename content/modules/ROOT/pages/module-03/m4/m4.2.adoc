@@ -747,10 +747,9 @@ Either way, the final outcome is the same — the bot shares the ticket and the 
 {blank}
 
 :fig-time: 6:53 PM
+:fig-user-msg: Yes, please share it with the customer.
 :fig-bot-msg: The ticket #1025 has been successfully shared with the customer. They will receive a link to the HelpDesk system.
-:fig-attach-title: Ticket 1025 ▾
-:fig-attach-desc: Click to open HelpDesk and select ticket 1025
-include::_figures/rc-bot-attach.adoc[]
+include::_figures/rc-interaction.adoc[]
 
 Remember — the customer communicates from the _Matrix_ messaging platform. The bot indicated the ticket was shared, which means the customer should have received a message with the ticket reference. Switch to your _Matrix_ window and check.
 

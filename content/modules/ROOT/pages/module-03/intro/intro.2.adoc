@@ -34,8 +34,6 @@ image:module-03/intro/devspaces-login-with-ocp.png[width=30%]
 +
 {empty} +
 
-url-docserver: {url-docserver}
-
 . Then, log in using your lab credentials:
 +
 --

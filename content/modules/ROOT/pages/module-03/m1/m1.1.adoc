@@ -63,7 +63,7 @@ Try it yourself — run a simple query against the database (from your terminal 
 [.copypaste]
 ****
 sql postgres.shared-database.svc:5432 \
-"SELECT count(*) FROM invoices"
+"SELECT count(*) FROM policies"
 ****
 
 [TIP]
@@ -73,7 +73,7 @@ sql postgres.shared-database.svc:5432 \
 ====
 * `sql` — a lab helper script that connects to a PostgreSQL database and runs a query
 * `postgres.shared-database.svc:5432` — database address: service, namespace, and port
-* `"SELECT count(*) FROM invoices"` — counts the number of records in the database
+* `"SELECT count(*) FROM policies"` — counts the number of records in the database
 ====
 --
 
@@ -742,7 +742,7 @@ Now let's verify the connection works. Run the same query as before, but this ti
 [.copypaste]
 ****
 sql postgres:5432 \
-"SELECT count(*) FROM invoices"
+"SELECT count(*) FROM policies"
 ****
 
 [TIP]
@@ -752,7 +752,7 @@ sql postgres:5432 \
 ====
 * `sql` — a lab helper script that connects to a PostgreSQL database and runs a query
 * `postgres:5432` — the database service exposed locally by _Service Interconnect_
-* `"SELECT count(*) FROM invoices"` — counts the number of records in the database
+* `"SELECT count(*) FROM policies"` — counts the number of records in the database
 ====
 --
 

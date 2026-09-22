@@ -356,8 +356,8 @@ testshop-order
 
 [.numbers]
 {x: 82, y: 12, size: 1.5}
-{x: 35, y: 86, size: 1.5}
-{x: 63, y: 58, size: 1.5}
+{x: 35, y: 88, size: 1.5}
+{x: 68, y: 60, size: 1.5}
 ****
 +
 {blank}
