@@ -153,16 +153,6 @@ flowchart LR
 +
 {empty} +
 
-// === Quick overview of Kaoto
-
-// include::../_shared/kaoto-intro.adoc[]
-
-// {empty} +
-
-// You'll start working on the Kaoto canvas in the next sections.
-
-// {empty} +
-
 === Open the ingestion flow in Kaoto
 
 [TIP]

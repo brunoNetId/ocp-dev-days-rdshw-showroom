@@ -81,13 +81,6 @@ The connection will time out — the database is not directly accessible from yo
 
 {blank}
 
-// ++++
-// <pre style="background-color: #272822; padding: 10px 15px; line-height: 1.4; white-space: pre-wrap; font-family: monospace; font-size: 14px; color: white">*   Trying 172.31.163.169:5432...
-// * Connection timed out after 3001 milliseconds
-// * Closing connection 0
-// curl: (28) Connection timed out after 3001 milliseconds</pre>
-// ++++
-
 ++++
 <pre style="background-color: #272822; padding: 10px 15px; line-height: 1.4; white-space: pre-wrap; font-family: monospace; font-size: 14px; color: white"><span style="color:rgb(243, 243, 47)">Connecting to postgres.shared-database.svc:5432 (timeout: 5s)...</span>
 
@@ -97,8 +90,6 @@ The connection will time out — the database is not directly accessible from yo
 {empty} +
 
 === Bridging namespaces with Service Interconnect
-
-// NOTE: {rhsi} is a supported offering built from the upstream https://skupper.io[Skupper.io,window=_blank] open-source project.
 
 {rhsi} (built from the open-source project https://skupper.io[Skupper.io,window=_blank]) solves this by creating encrypted application-level connections between namespaces — without requiring VPNs, firewall rules, or exposing services to the public network.
 
